@@ -1,9 +1,6 @@
 package io.gitHub.AugustoMello09.tarefas.domain.entities;
 
 import java.io.Serializable;
-import java.util.UUID;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,20 +20,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_usuario")
-public class Usuario implements Serializable {
+@Table(name = "tb_cargo")
+public class Cargo implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
-	
-	private String name;
-	
-	@Column(unique = true, nullable = true)
-	private String email;
-	
-	@JsonIgnore
-	private String password;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(nullable = false)
+	private String authority;
 
 }
