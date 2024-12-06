@@ -56,7 +56,7 @@ public class UsuarioService {
 	}
 	
 	
-	protected void assignRole(Usuario usuario, UsuarioDTOInsert objDto) {
+	protected void assignRole(Usuario usuario, UsuarioDTO objDto) {
 		for(CargoDTO cargos : objDto.getCargos()) {
 			Cargo cargo = cargoRepository.findById(cargos.getId())
 					.orElseThrow(() -> new ObjectNotFoundException("Cargo não encontrado"));
@@ -64,7 +64,7 @@ public class UsuarioService {
 		}
 	}
 	
-	protected void emailAlreadyExists(UsuarioDTOInsert usuarioDTO) {
+	protected void emailAlreadyExists(UsuarioDTO usuarioDTO) {
 		Optional<Usuario> entity = repository.findByEmail(usuarioDTO.getEmail());
 		if (entity.isPresent() && !entity.get().getId().equals(usuarioDTO.getId())) {
 			throw new DataIntegratyViolationException("Email já existe");
