@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  config:
+    import: optional:file:.env[.properties]
   jpa:
     open-in-view: true
   application:
@@ -9,3 +11,12 @@ spring:
   profiles:
     active:
     - test
+    
+auth:
+  jwt:
+    token:
+      secret: ${JWT_TOKEN_SECRET}
+      expiration: 2
+    refresh-token:
+      expiration: 8 
+          
