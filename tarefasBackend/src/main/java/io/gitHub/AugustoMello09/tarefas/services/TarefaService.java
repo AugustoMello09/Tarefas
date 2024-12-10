@@ -46,7 +46,7 @@ public class TarefaService {
 	@Transactional
 	public TarefaDTO create(TarefaRecord tarefaRecord, UUID id) {
 		Usuario usuario = usuarioRepository.findById(id)
-				.orElseThrow(() -> new ObjectNotFoundException("tarefa não encontrado"));
+				.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
 		nameAlreadyExists(tarefaRecord.name(), usuario.getId());
 		Tarefa tarefa = new Tarefa();
 		tarefa.setName(tarefaRecord.name());
@@ -74,7 +74,7 @@ public class TarefaService {
 	@Transactional
 	public void moveTarefa(UUID usuarioId, int sourceIndex, int destinationIndex) {
 		Usuario usuario = usuarioRepository.findById(usuarioId)
-				.orElseThrow(() -> new ObjectNotFoundException("tarefa não encotrado"));
+				.orElseThrow(() -> new ObjectNotFoundException("Usuário não encotrado"));
 		List<Tarefa> tarefas = repository.findAllByUsuarioIdOrderByPosition(usuario.getId());
 		Tarefa obj = tarefas.remove(sourceIndex);
 		tarefas.add(destinationIndex, obj);
