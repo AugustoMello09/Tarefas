@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,7 +25,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_tarefa")
+@Table(
+    name = "tb_tarefa",
+    uniqueConstraints = @UniqueConstraint(columnNames = {"usuario_id", "name"})
+)
 public class Tarefa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -32,7 +36,7 @@ public class Tarefa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = true, unique = true)
+	@Column(nullable = true)
 	private String name;
 
 	private BigDecimal cost;
