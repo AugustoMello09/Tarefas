@@ -1,5 +1,6 @@
 package io.gitHub.AugustoMello09.tarefas.repositories;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,5 +25,25 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 	void updateBelongingPosition(Long id, Integer newPosition, UUID usuarioId);
 	
 	boolean existsByNameAndUsuarioId(String name, UUID usuarioId);
+	
+	@Query("SELECT t FROM Tarefa t WHERE t.usuario.id = :usuarioId AND t.favorite = true ORDER BY t.position")
+    List<Tarefa> findFavoritesByUsuarioIdOrderByPosition(@Param("usuarioId") UUID usuarioId);
+	
+	@Query("SELECT t FROM Tarefa t WHERE t.usuario.id = :usuarioId AND t.dueDate = CURRENT_DATE ORDER BY t.position")
+    List<Tarefa> findTodayTasksByUsuarioIdOrderByPosition(@Param("usuarioId") UUID usuarioId);
+	
+	@Query("SELECT t FROM Tarefa t WHERE t.usuario.id = :usuarioId AND t.dueDate BETWEEN :startOfWeek AND :endOfWeek ORDER BY t.position")
+    List<Tarefa> findWeeklyTasksByUsuarioIdOrderByPosition(
+        @Param("usuarioId") UUID usuarioId,
+        @Param("startOfWeek") LocalDate startOfWeek,
+        @Param("endOfWeek") LocalDate endOfWeek
+    );
+	
+	@Query("SELECT t FROM Tarefa t WHERE t.usuario.id = :usuarioId AND YEAR(t.dueDate) = :year AND MONTH(t.dueDate) = :month ORDER BY t.position")
+    List<Tarefa> findMonthlyTasksByUsuarioIdOrderByPosition(
+        @Param("usuarioId") UUID usuarioId,
+        @Param("year") int year,
+        @Param("month") int month
+    );
 
 }

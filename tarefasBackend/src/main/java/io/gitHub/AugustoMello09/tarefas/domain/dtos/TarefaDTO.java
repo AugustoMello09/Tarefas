@@ -27,12 +27,15 @@ public class TarefaDTO implements Serializable {
 	
 	private int position;
 	
+	private Boolean favorite;
+	
 	public TarefaDTO(Tarefa entity) {
 		id = entity.getId();
 		name = entity.getName();
 		cost = entity.getCost();
 		dueDate = entity.getDueDate();
 		position = entity.getPosition();
+		favorite = entity.getFavorite();
 	}
 
 }

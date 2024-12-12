@@ -75,4 +75,34 @@ public class TarefaController {
 		var response = service.patchUpdate(fields, id);
 		return ResponseEntity.ok().body(response);
 	}
+	
+	@PatchMapping(value = "/DefinirTarefaFavorita/{id}")
+	public ResponseEntity<TarefaDTO> favorite(@PathVariable Long id) {
+		var response = service.activateFavorite(id);
+		return ResponseEntity.ok().body(response);
+	}
+	
+	@GetMapping(value = "/tarefasFavoritas/{id}")
+	public ResponseEntity<List<TarefaDTO>> listFavoriteTesks(@PathVariable UUID id) {
+		var response = service.getFavorites(id);
+		return ResponseEntity.ok().body(response);
+	}
+	
+	@GetMapping(value = "/tarefasHoje/{id}")
+	public ResponseEntity<List<TarefaDTO>> listTodayTasks(@PathVariable UUID id) {
+		var response = service.getTodayTasks(id);
+		return ResponseEntity.ok().body(response);
+	}
+	
+	@GetMapping(value = "/tarefasSemana/{id}")
+	public ResponseEntity<List<TarefaDTO>> listWeeklyTasks(@PathVariable UUID id) {
+		var response = service.getWeeklyTasks(id);
+		return ResponseEntity.ok().body(response);
+	}
+	
+	@GetMapping(value = "/tarefasMes/{id}")
+	public ResponseEntity<List<TarefaDTO>> listMonthlyTasks(@PathVariable UUID id) {
+		var response = service.getMonthlyTasks(id);
+		return ResponseEntity.ok().body(response);
+	}
 }

@@ -45,6 +45,8 @@ public class Tarefa implements Serializable {
 	
 	private Integer position;
 	
+	private Boolean favorite;
+	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;

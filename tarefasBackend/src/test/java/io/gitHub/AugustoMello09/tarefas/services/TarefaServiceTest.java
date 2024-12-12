@@ -57,6 +57,9 @@ public class TarefaServiceTest {
 
 	@Mock
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Mock
+	private EmailService emailService;
 
 	private TarefaProvider tarefaProvider;
 	private UsuarioProvider usuarioProvider;
@@ -66,7 +69,7 @@ public class TarefaServiceTest {
 		MockitoAnnotations.openMocks(this);
 		tarefaProvider = new TarefaProvider();
 		usuarioProvider = new UsuarioProvider(passwordEncoder);
-		service = new TarefaService(repository, usuarioRepository);
+		service = new TarefaService(repository, usuarioRepository, emailService);
 	}
 
 	@DisplayName("Deve retornar uma tarefa com sucesso.")
@@ -94,7 +97,7 @@ public class TarefaServiceTest {
 	public void whenFindAllThenReturnTarefaDTO() {
 		;
 		List<Tarefa> tarefas = Arrays
-				.asList(new Tarefa(ID, "Estudar", BigDecimal.ZERO, LocalDate.now().plusDays(2), 0, null));
+				.asList(new Tarefa(ID, "Estudar", BigDecimal.ZERO, LocalDate.now().plusDays(2), 0, false, null));
 		when(repository.findAllByUsuarioIdOrderByPosition(IDUSUARIO)).thenReturn(tarefas);
 		List<TarefaDTO> result = service.listAll(IDUSUARIO);
 		assertNotNull(result);

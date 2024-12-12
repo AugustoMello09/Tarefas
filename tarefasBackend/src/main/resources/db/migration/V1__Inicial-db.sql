@@ -7,3 +7,5 @@ alter table tb_usuario add constraint UK_spmnyb4dsul95fjmr5kmdmvub unique (email
 alter table tb_tarefa add constraint FKedirc16whwdanrdo0a20m1wre foreign key (usuario_id) references tb_usuario (id);
 alter table tb_usuario_cargo add constraint FKfoxfmrp32u59p9yvguydp9ybj foreign key (cargo_id) references tb_cargo (id);
 alter table tb_usuario_cargo add constraint FKdaew2172j172duhsiyma5rfq5 foreign key (usuario_id) references tb_usuario (id);
+ALTER TABLE tb_usuario ADD COLUMN notification BOOLEAN;
+ALTER TABLE tb_tarefa ADD COLUMN favorite BOOLEAN;

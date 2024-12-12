@@ -41,6 +41,7 @@ public class UsuarioService {
 		usuario.setEmail(objDto.getEmail());
 		usuario.setPassword(passwordEncoder.encode(objDto.getSenha()));
 		assignRole(usuario, objDto);
+		usuario.setNotification(false);
 		repository.save(usuario);
 		return new UsuarioDTO(usuario);
 	}
@@ -53,6 +54,15 @@ public class UsuarioService {
 		entity.setEmail(usuarioDTO.getEmail());
 		repository.save(entity);
 		
+	}
+	
+	@Transactional
+	public UsuarioDTO activateNotification(UUID id) {
+		Usuario entity = repository.findById(id)
+				.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
+		entity.setNotification(true);
+		repository.save(entity);
+		return new UsuarioDTO(entity);
 	}
 	
 	

@@ -2,6 +2,7 @@ package io.gitHub.AugustoMello09.tarefas.services;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,7 @@ public class TarefaService {
 
 	private final TarefaRepository repository;
 	private final UsuarioRepository usuarioRepository;
+	private final EmailService emailService;
 
 	@Transactional(readOnly = true)
 	public TarefaDTO findById(Long id) {
@@ -56,7 +58,11 @@ public class TarefaService {
 		Integer maxPosition = repository.findMaxPositionByUsuario(id);
 		tarefa.setPosition(maxPosition + 1);
 		tarefa.setUsuario(usuario);
+		tarefa.setFavorite(false);
 		repository.save(tarefa);
+		if(usuario.getNotification().equals(true)) {
+			new Thread(() -> emailService.sendEmail(usuario.getEmail(), usuario.getName())).start();
+		}
 		return new TarefaDTO(tarefa);
 	}
 
@@ -130,5 +136,42 @@ public class TarefaService {
 			throw new DataIntegratyViolationException("O usuário já possui uma tarefa com este nome.");
 		}
 	}
-
+	
+	@Transactional
+	public TarefaDTO activateFavorite(Long id) {
+		Tarefa tarefa = repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("tarefa não encontrada"));
+		tarefa.setFavorite(true);
+		repository.save(tarefa);
+		return new TarefaDTO(tarefa);
+	}
+	
+	@Transactional
+	public List<TarefaDTO> getFavorites(UUID usuarioId) {
+        List<Tarefa> tarefas = repository.findFavoritesByUsuarioIdOrderByPosition(usuarioId);
+        return tarefas.stream().map(TarefaDTO::new).collect(Collectors.toList());
+    }
+	
+	@Transactional
+	public List<TarefaDTO> getTodayTasks(UUID usuarioId) {
+        List<Tarefa> tarefas = repository.findTodayTasksByUsuarioIdOrderByPosition(usuarioId);
+        return tarefas.stream().map(TarefaDTO::new).collect(Collectors.toList());
+    }
+	
+	@Transactional
+	public List<TarefaDTO> getWeeklyTasks(UUID usuarioId) {
+	    LocalDate now = LocalDate.now();
+	    LocalDate startOfWeek = now.with(DayOfWeek.MONDAY);
+	    LocalDate endOfWeek = now.with(DayOfWeek.SUNDAY);
+	    List<Tarefa> tarefas = repository.findWeeklyTasksByUsuarioIdOrderByPosition(usuarioId, startOfWeek, endOfWeek);
+	    return tarefas.stream().map(TarefaDTO::new).collect(Collectors.toList());
+	}
+	
+	@Transactional
+	public List<TarefaDTO> getMonthlyTasks(UUID usuarioId) {
+        LocalDate now = LocalDate.now();
+        int currentYear = now.getYear();
+        int currentMonth = now.getMonthValue();
+        List<Tarefa> tarefas = repository.findMonthlyTasksByUsuarioIdOrderByPosition(usuarioId, currentYear, currentMonth);
+        return tarefas.stream().map(TarefaDTO::new).collect(Collectors.toList());
+    }
 }

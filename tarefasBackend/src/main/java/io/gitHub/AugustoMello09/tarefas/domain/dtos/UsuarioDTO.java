@@ -28,6 +28,8 @@ public class UsuarioDTO implements Serializable {
 	
 	private List<TarefaDTO> tarefas = new ArrayList<>();
 	
+	private Boolean notification;
+	
 	public UsuarioDTO(Usuario entity) {
 		id = entity.getId();
 		name = entity.getName();
@@ -36,6 +38,7 @@ public class UsuarioDTO implements Serializable {
 		.forEach(car -> this.cargos.add(new CargoDTO(car)));
 		entity.getTarefas().stream()
 		.forEach(tar -> this.tarefas.add(new TarefaDTO(tar)));
+		notification = entity.getNotification();
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -42,5 +43,11 @@ public class UsuarioController {
 	public ResponseEntity<Void> update(@RequestBody UsuarioDTO usuarioDTO, @PathVariable UUID id) {
 		service.updateUser(usuarioDTO, id);
 		return ResponseEntity.ok().build();
+	}
+	
+	@PatchMapping(value = "ativarNotificacao/{id}")
+	public ResponseEntity<UsuarioDTO> activateNotification(@PathVariable UUID id) {
+		var response  = service.activateNotification(id);
+		return ResponseEntity.ok().body(response);
 	}
 }
