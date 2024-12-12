@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth !important;
+	touch-action: manipulation !important;
+  -ms-touch-action: manipulation !important;
+}
