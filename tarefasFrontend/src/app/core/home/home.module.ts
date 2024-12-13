@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { FuncionalidadesComponent } from './components/funcionalidades/funcionalidades.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    InicioComponent
+    InicioComponent,
+    FuncionalidadesComponent
   ],
   imports: [
     CommonModule,
