@@ -1,0 +1,5 @@
+.groud {
+  background-image: url('src/assets/img/fundo.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}

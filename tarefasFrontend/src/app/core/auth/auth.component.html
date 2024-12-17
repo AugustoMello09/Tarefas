@@ -1,0 +1,22 @@
+<div class="bg-gray-100 flex justify-center items-center h-screen">
+
+<div class="w-1/2 h-screen hidden lg:block groud bg-cover bg-center relative">
+
+  <div class="absolute inset-0 bg-black opacity-75"></div>
+
+  <div class="flex items-center justify-center w-full h-full relative">
+    <img
+          src="../../../assets/img/Thinking.svg"
+          alt=""
+          class="max-w-md h-96 xd:max-w-full"
+        />
+  </div>
+  
+</div>
+
+<div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+  <app-login *ngIf="showLoginComponent" (toggle)="toggleComponent()"></app-login>
+  <app-registro *ngIf="!showLoginComponent" (toggle)="toggleComponent()"></app-registro>
+</div>
+
+</div>

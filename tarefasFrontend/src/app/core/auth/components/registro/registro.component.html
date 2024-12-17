@@ -1,0 +1,37 @@
+<h1 class="text-2xl font-semibold mb-4">Registro</h1>
+
+<form #f="ngForm">
+
+  <div class="mb-4">
+    <label for="username" class="block text-sm font-medium text-gray-700">Nome</label>
+    <input type="text" id="username" name="username" required [(ngModel)]="usuario.name" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
+    <div *ngIf="(f.controls['username']?.invalid && f.controls['username']?.touched) || f.controls['username']?.dirty">
+      <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['username']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
+      <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['username']?.errors?.['maxlength']">O campo username deve ter no máximo 150 caracteres.</span>
+    </div>
+  </div>
+  
+  <div class="mb-4">
+    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+    <input type="text" id="email" name="email" required [(ngModel)]="usuario.email" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
+    <div *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
+      <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['email']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
+    </div>
+  </div>
+  
+  <div class="mb-4">
+    <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
+    <input type="password" id="password" name="password" required [(ngModel)]="usuario.password" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
+    <div *ngIf="(f.controls['password']?.invalid && f.controls['password']?.touched) || f.controls['password']?.dirty">
+      <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['password']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
+    </div>
+  </div>
+  
+  <div>
+    <button type="submit" [disabled]="f.invalid" class="disabled:bg-gray-400 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Criar conta</button>
+  </div>
+</form>
+
+<div class="mt-6 text-blue-500 text-center">
+  <p>Você já tem uma conta? <a (click)="toggleComponent()" class="hover:underline cursor-pointer">Faça o login clicando aki</a></p>
+</div>
