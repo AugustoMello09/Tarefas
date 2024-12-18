@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token_access', token_access);
       this.message("Login feito com sucesso!");
       this.spinner.hide();
-      this.router.navigate(['']);
+      this.router.navigate(['/tarefas']);
     }, (err:  HttpErrorResponse) => {
       this.addMessageError(err);
       this.spinner.hide();

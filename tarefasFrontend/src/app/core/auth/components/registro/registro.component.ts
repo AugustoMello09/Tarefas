@@ -45,7 +45,7 @@ export class RegistroComponent implements OnInit {
         const token_access = JSON.stringify(result);
         localStorage.setItem('token_access', token_access);
         this.spinner.hide();
-        this.router.navigate(['']);
+        this.router.navigate(['/tarefas']);
       })
     }, (err: HttpErrorResponse) => {
       if (err.status === 400) {
