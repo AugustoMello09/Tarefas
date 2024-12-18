@@ -70,6 +70,7 @@ public class TokenService implements UserDetailsService {
 			String accessToken = JWT.create().withIssuer(ISSUER).withSubject(usuario.getEmail())
 					.withClaim("id", usuario.getId().toString()).withClaim("nome", usuario.getName())
 					.withClaim("email", usuario.getEmail()).withClaim("roles", rolesAsString)
+					.withClaim("notification", usuario.getNotification())
 					.withExpiresAt(genExpiInstance()).sign(algorithm);
 
 			String refreshToken = JWT.create().withIssuer(ISSUER).withSubject(usuario.getEmail())

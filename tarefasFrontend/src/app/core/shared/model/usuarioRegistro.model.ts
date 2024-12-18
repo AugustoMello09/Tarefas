@@ -4,6 +4,6 @@ export interface UsuarioRegistro {
   id: any;
   name: string;
   email: string;
-  password: string;
+  senha: string;
   cargos: CargoId[];
 }

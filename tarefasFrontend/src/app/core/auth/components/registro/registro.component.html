@@ -20,15 +20,15 @@
   </div>
   
   <div class="mb-4">
-    <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
-    <input type="password" id="password" name="password" required [(ngModel)]="usuario.password" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
-    <div *ngIf="(f.controls['password']?.invalid && f.controls['password']?.touched) || f.controls['password']?.dirty">
-      <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['password']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
+    <label for="senha" class="block text-sm font-medium text-gray-700">Senha</label>
+    <input type="senha" id="senha" name="senha" required [(ngModel)]="usuario.senha" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
+    <div *ngIf="(f.controls['senha']?.invalid && f.controls['senha']?.touched) || f.controls['senha']?.dirty">
+      <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['senha']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
     </div>
   </div>
   
   <div>
-    <button type="submit" [disabled]="f.invalid" class="disabled:bg-gray-400 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Criar conta</button>
+    <button type="submit" (click)="criar()" [disabled]="f.invalid" class="disabled:bg-gray-400 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Criar conta</button>
   </div>
 </form>
 

@@ -24,7 +24,7 @@
       <label for="remember" class="text-gray-600 ml-2">Lembrar de min</label>
     </div>
  
-    <button type="submit" [disabled]="f.invalid" class="disabled:bg-gray-400 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
+    <button type="submit" (click)="login()" [disabled]="f.invalid" class="disabled:bg-gray-400 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
   </form>
 
   <div class="mt-6 text-blue-500 text-center">

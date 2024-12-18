@@ -7,3 +7,5 @@ html {
 	touch-action: manipulation !important;
   -ms-touch-action: manipulation !important;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
