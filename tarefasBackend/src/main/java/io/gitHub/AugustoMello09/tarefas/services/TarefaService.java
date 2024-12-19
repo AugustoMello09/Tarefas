@@ -140,9 +140,8 @@ public class TarefaService {
 	@Transactional
 	public TarefaDTO activateFavorite(Long id) {
 		Tarefa tarefa = repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("tarefa não encontrada"));
-		tarefa.setFavorite(true);
-		repository.save(tarefa);
-		return new TarefaDTO(tarefa);
+		tarefa.setFavorite(!tarefa.getFavorite());
+		return new TarefaDTO(repository.save(tarefa));
 	}
 	
 	@Transactional

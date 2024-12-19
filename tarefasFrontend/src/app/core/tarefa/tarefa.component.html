@@ -7,6 +7,9 @@
   <div class="flex items-center justify-center w-full" style="min-height: calc(100vh - 120px);">
 
 
+    <div class="max-w-5xl m-5 w-full list-none rounded-xl border border-black bg-white px-5 pb-2 pt-4 dark:border-white dark:bg-zinc-950 shadow-[6px_5px_0px_0px_#000000]">
+      <app-todas-tarefas *ngIf="showTarefaComponent" (toggle)="toggleComponent()"></app-todas-tarefas>
+    </div>
 
 
   </div> 

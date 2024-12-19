@@ -4,6 +4,10 @@ import { FooterOneComponent } from './layout/footer-one/footer-one.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { MaterialModule } from 'src/app/material.module';
 import { FooterTwoComponent } from './layout/footer-two/footer-two.component';
+import { CriarTarefaComponent } from './components/criar-tarefa/criar-tarefa.component';
+import { FormsModule } from '@angular/forms';
+import { ExcluirTarefaComponent } from './components/excluir-tarefa/excluir-tarefa.component';
+import { UpdateTarefaComponent } from './components/update-tarefa/update-tarefa.component';
 
 
 
@@ -11,11 +15,15 @@ import { FooterTwoComponent } from './layout/footer-two/footer-two.component';
   declarations: [
     FooterOneComponent,
     HeaderComponent,
-    FooterTwoComponent
+    FooterTwoComponent,
+    CriarTarefaComponent,
+    ExcluirTarefaComponent,
+    UpdateTarefaComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   exports: [
     FooterOneComponent,

@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TarefaComponent implements OnInit {
 
+  showTarefaComponent: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  toggleComponent() {
+    this.showTarefaComponent = !this.showTarefaComponent;
+  }
+
+
 
 }

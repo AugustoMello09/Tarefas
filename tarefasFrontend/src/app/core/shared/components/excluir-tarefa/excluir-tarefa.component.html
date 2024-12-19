@@ -1,0 +1,38 @@
+
+<div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden ">
+  <!-- Modal content -->
+  <div class="bg-white rounded-lg">
+      <!-- Modal header -->
+      <div class="text-right h-1/5">
+          <button (click)="close()" type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="authentication-modal">
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+              </svg>
+              <span class="sr-only">Close modal</span>
+          </button>
+      </div>
+      <!-- Modal body -->
+      <div class="w-full">
+        <div class="p-4 md:p-5 text-center">
+          <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+          </svg>
+          <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Tem certeza que desaja deletar essa tarefa ? </h3>
+          <div class="w-full flex flex-col-reverse items-center justify-between">
+            <button
+            (click)="cancelar()"
+            class="font-dm w-fit text-center text-2xl bg-green-400 p-2 my-2 rounded-2xl border border-black text-white shadow-[4px4px#000000] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px6px#000000] active:translate-x-1 active:translate-y-1 active:shadow-none auto:text-xl"
+           >
+             Cancelar
+           </button>
+              <button
+              (click)="deletar()"
+               class="font-dm w-fit text-center text-2xl bg-red-600 p-2 rounded-2xl border border-black text-white shadow-[4px4px#000000] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px6px#000000] active:translate-x-1 active:translate-y-1 active:shadow-none auto:text-xl"
+              >
+                Deletar
+              </button>
+          </div>
+      </div>
+      </div>
+  </div>
+</div>

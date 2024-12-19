@@ -1,0 +1,57 @@
+<div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+  
+  <div class="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
+      Nova Tarefa
+  </div>
+  
+  <form class="py-4 px-6" #f="ngForm">
+      <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2" for="name">
+              Nome
+          </label>
+          <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="name" required maxlength="91" id="name" type="text" placeholder="Nome da tarefa" [(ngModel)]="tarefa.name">
+          <div *ngIf="(f.controls['name']?.invalid && f.controls['name']?.touched) || f.controls['name']?.dirty">
+            <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['name']?.errors?.['required']">O campo nome deve ser preenchido.</span>
+          </div>      
+      </div>
+      <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2" for="dueDate">
+              Data máxima
+          </label>
+          <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="dueDate" required  id="dueDate" type="date" placeholder="Select a date" [(ngModel)]="tarefa.dueDate">
+          <div *ngIf="(f.controls['dueDate']?.invalid && f.controls['dueDate']?.touched) || f.controls['dueDate']?.dirty">
+            <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['dueDate']?.errors?.['required']">O campo data deve ser preenchido.</span>
+          </div> 
+      </div>
+      <div class="mb-4"> 
+        <label class="block text-gray-700 font-bold mb-2" for="cost">
+            Custo
+          </label>
+          <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="cost" id="cost" required min="0" type="number"  placeholder=" " [(ngModel)]="tarefa.cost">
+              <div *ngIf="(f.controls['cost']?.invalid && f.controls['cost']?.touched) || f.controls['cost']?.dirty">
+                <span class="text-red-600 font-bold text-xs" *ngIf="f.controls['cost']?.errors?.['required']">
+                  O campo custo é obrigatório.
+                </span>
+                <span class="text-red-600 font-bold text-xs" *ngIf="f.controls['cost']?.errors?.['min']">
+                  O valor deve ser maior ou igual a 0.
+                </span>
+              </div>
+      </div>
+
+      <div class="w-full text-center">
+        <button (click)="create()"
+         [disabled]="f.invalid"
+         class="disabled:bg-gray-400 disabled:cursor-not-allowed font-dm w-fit text-center text-2xl bg-blue-600 p-2 rounded-2xl border border-black text-white shadow-[4px4px#000000] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px6px#000000] active:translate-x-1 active:translate-y-1 active:shadow-none auto:text-xl"
+        >
+          Criar nova tarefa
+        </button>
+      </div>
+  </form>
+
+</div>
