@@ -6,12 +6,14 @@ import { TarefaComponent } from './tarefa.component';
 import { SharedModule } from '../shared/shared.module';
 import { TodasTarefasComponent } from './components/todas-tarefas/todas-tarefas.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FavoritasTarefasComponent } from './components/favoritas-tarefas/favoritas-tarefas.component';
 
 
 @NgModule({
   declarations: [
     TarefaComponent,
-    TodasTarefasComponent
+    TodasTarefasComponent,
+    FavoritasTarefasComponent
   ],
   imports: [
     CommonModule,

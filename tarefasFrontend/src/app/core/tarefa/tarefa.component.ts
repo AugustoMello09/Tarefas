@@ -7,17 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TarefaComponent implements OnInit {
 
-  showTarefaComponent: boolean = true;
+  currentView: string = 'todas';
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  toggleComponent() {
-    this.showTarefaComponent = !this.showTarefaComponent;
+  toggleComponent(view: string) {
+    this.currentView = view;
   }
-
-
-
 }

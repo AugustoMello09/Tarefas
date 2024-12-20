@@ -16,8 +16,6 @@ import { Tarefa } from 'src/app/core/shared/model/tarefa.model';
 })
 export class TodasTarefasComponent implements OnInit {
 
-  @Output() toggle = new EventEmitter<void>();
-
   public tarefas: Tarefa[] = [];
 
   public dragging: boolean = false;
@@ -40,7 +38,7 @@ export class TodasTarefasComponent implements OnInit {
       })
     }
   }
-
+  
   public favorite(id: number): void {
     this.service.favorite(id).subscribe(() => {
       const tarefa = this.tarefas.find(t => t.id === id);
@@ -48,10 +46,6 @@ export class TodasTarefasComponent implements OnInit {
         tarefa.favorite = !tarefa.favorite;
       }
     }); 
-  }
-
-  toggleComponent() {
-    this.toggle.emit();
   }
 
   public open(): void {

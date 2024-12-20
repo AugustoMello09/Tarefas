@@ -8,6 +8,7 @@ import { CriarTarefaComponent } from './components/criar-tarefa/criar-tarefa.com
 import { FormsModule } from '@angular/forms';
 import { ExcluirTarefaComponent } from './components/excluir-tarefa/excluir-tarefa.component';
 import { UpdateTarefaComponent } from './components/update-tarefa/update-tarefa.component';
+import { SidenavComponent } from './layout/sidenav/sidenav.component';
 
 
 
@@ -18,7 +19,8 @@ import { UpdateTarefaComponent } from './components/update-tarefa/update-tarefa.
     FooterTwoComponent,
     CriarTarefaComponent,
     ExcluirTarefaComponent,
-    UpdateTarefaComponent
+    UpdateTarefaComponent,
+    SidenavComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { UpdateTarefaComponent } from './components/update-tarefa/update-tarefa.
   exports: [
     FooterOneComponent,
     HeaderComponent,
-    FooterTwoComponent
+    FooterTwoComponent,
+    SidenavComponent
   ]
 })
 export class SharedModule { }

@@ -69,4 +69,11 @@ export class TarefaService {
     const url = `${this.baseUrl}/v1/tarefas/move/${id}`;
     return this.http.post<void>(url, order);
   }
+
+  public listAllFavorite(id : any): void {
+    const url = `${this.baseUrl}/v1/tarefas/tarefasFavoritas/${id}`;
+    this.http.get<Tarefa[]>(url).subscribe((tarefas) => {
+      this.tarefasSubject.next(tarefas); 
+    });
+  }
 }

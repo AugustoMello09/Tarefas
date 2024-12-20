@@ -15,6 +15,12 @@
 
 <div *ngIf="tarefas.length === 0" class="text-center p-4"> 
   <p class="font-Gro text-base text-black">Você ainda não possui tarefas</p> 
+
+  <br>
+  
+  <div class="flex items-center justify-center">
+    <img src="../../../../../assets/img/nao.svg" alt="" class="max-w-md h-60 xr:max-w-full px-3">
+  </div>
 </div>
 
 <div cdkDropList (cdkDropListDropped)="drop($event)">

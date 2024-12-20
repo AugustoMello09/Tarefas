@@ -8,7 +8,8 @@
 
 
     <div class="max-w-5xl m-5 w-full list-none rounded-xl border border-black bg-white px-5 pb-2 pt-4 dark:border-white dark:bg-zinc-950 shadow-[6px_5px_0px_0px_#000000]">
-      <app-todas-tarefas *ngIf="showTarefaComponent" (toggle)="toggleComponent()"></app-todas-tarefas>
+      <app-todas-tarefas *ngIf="currentView === 'todas'"></app-todas-tarefas>
+      <app-favoritas-tarefas *ngIf="currentView === 'favoritas'"></app-favoritas-tarefas>
     </div>
 
 
@@ -16,5 +17,5 @@
 
 
 </main>
-
+<app-sidenav (toggleView)="toggleComponent($event)"></app-sidenav>
 <app-footer-two></app-footer-two>
