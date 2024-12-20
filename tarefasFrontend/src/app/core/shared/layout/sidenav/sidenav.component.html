@@ -25,6 +25,24 @@
         </button>
      </li>
       <li>
+          <button (click)="showView('hoje')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <mat-icon aria-hidden="false" aria-label="Example logout icon" fontIcon="calendar_today" class="text-blue-700 hover:text-gray-700"></mat-icon>
+            <span class="flex-1 ms-3 whitespace-nowrap">Tarefas criadas hoje</span>
+          </button>
+      </li>
+      <li>
+        <button (click)="showView('semana')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+          <mat-icon aria-hidden="false" aria-label="Example logout icon" fontIcon="calendar_today" class="text-blue-700 hover:text-gray-700"></mat-icon>
+          <span class="flex-1 ms-3 whitespace-nowrap">Tarefas da semana</span>
+        </button>
+    </li>
+    <li>
+        <button (click)="showView('mes')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+          <mat-icon aria-hidden="false" aria-label="Example logout icon" fontIcon="calendar_today" class="text-blue-700 hover:text-gray-700"></mat-icon>
+          <span class="flex-1 ms-3 whitespace-nowrap">Tarefas do mês</span>
+        </button>
+    </li>
+      <li>
        <button (click)="inicio()" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" class="text-blue-700 hover:text-gray-700"></mat-icon>
          <span class="ms-3">Página Inicial</span>

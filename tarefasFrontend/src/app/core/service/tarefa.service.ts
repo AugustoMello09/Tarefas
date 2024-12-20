@@ -76,4 +76,25 @@ export class TarefaService {
       this.tarefasSubject.next(tarefas); 
     });
   }
+
+  public listAllHoje(id : any): void {
+    const url = `${this.baseUrl}/v1/tarefas/tarefasHoje/${id}`;
+    this.http.get<Tarefa[]>(url).subscribe((tarefas) => {
+      this.tarefasSubject.next(tarefas); 
+    });
+  }
+
+  public listAllSemana(id : any): void {
+    const url = `${this.baseUrl}/v1/tarefas/tarefasSemana/${id}`;
+    this.http.get<Tarefa[]>(url).subscribe((tarefas) => {
+      this.tarefasSubject.next(tarefas); 
+    });
+  }
+
+  public listAllMes(id : any): void {
+    const url = `${this.baseUrl}/v1/tarefas/tarefasMes/${id}`;
+    this.http.get<Tarefa[]>(url).subscribe((tarefas) => {
+      this.tarefasSubject.next(tarefas); 
+    });
+  }
 }

@@ -26,7 +26,7 @@
 <div cdkDropList (cdkDropListDropped)="drop($event)">
 
   
-  <div *ngFor="let tarefa of tarefas; let i = index" cdkDrag (cdkDragStarted)="onDragStarted(i)" (cdkDragEnded)="onDragEnded()" [ngClass]="{ 'bg-indigo-100 rounded-r-lg': tarefa.cost >= 1000, 'cdk-drag-placeholder': dragging && draggedIndex !== i }" class="flex overflow-hidden items-center rounded-xl border-2 border-black bg-white dark:border-white dark:bg-zinc-950 mb-4">
+  <div *ngFor="let tarefa of tarefas; let i = index" cdkDrag (cdkDragStarted)="onDragStarted(i)" (cdkDragEnded)="onDragEnded()" [ngClass]="{ 'bg-indigo-200 rounded-r-lg': tarefa.cost >= 1000, 'cdk-drag-placeholder': dragging && draggedIndex !== i }" class="flex overflow-hidden items-center rounded-xl border-2 border-black bg-white dark:border-white dark:bg-zinc-950 mb-4">
   
   
     <div class="rounded-l-xl h-full p-3 menor:hidden">
