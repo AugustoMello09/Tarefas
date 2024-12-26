@@ -31,7 +31,6 @@ export class TodasTarefasComponent implements OnInit {
     if (token) {
       const decodedToken: any = jwtDecode(token);
       const id = decodedToken.id;
-      console.log(id);
       this.service.listAll(id);
       this.service.tarefas$.subscribe((tarefas) => { 
       this.tarefas = tarefas;

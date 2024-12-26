@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { ExcluirTarefaComponent } from './components/excluir-tarefa/excluir-tarefa.component';
 import { UpdateTarefaComponent } from './components/update-tarefa/update-tarefa.component';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { NotificacaoComponent } from './components/notificacao/notificacao.component';
 
 
 
@@ -20,7 +23,10 @@ import { SidenavComponent } from './layout/sidenav/sidenav.component';
     CriarTarefaComponent,
     ExcluirTarefaComponent,
     UpdateTarefaComponent,
-    SidenavComponent
+    SidenavComponent,
+    CalendarioComponent,
+    PerfilComponent,
+    NotificacaoComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +37,10 @@ import { SidenavComponent } from './layout/sidenav/sidenav.component';
     FooterOneComponent,
     HeaderComponent,
     FooterTwoComponent,
-    SidenavComponent
+    SidenavComponent,
+    CalendarioComponent,
+    PerfilComponent,
+    NotificacaoComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,50 @@
+<div class="max-w-xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+  
+  <div class="relative w-full max-w-md max-h-full">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <!-- Modal header -->
+      <div class="flex items-center justify-between p-4 border-b rounded-t dark:border-gray-600">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+          Informações do Usuário
+        </h3>
+        <button (click)="close()" type="button" class=" text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm4.28-10.28a1 1 0 00-1.42-1.42L10 8.59l-2.36-2.36a1 1 0 00-1.42 1.42L8.59 10l-2.36 2.36a1 1 0 001.42 1.42L10 11.41l2.36 2.36a1 1 0 001.42-1.42L11.41 10l2.36-2.36z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="p-6 space-y-6">
+        <div class="w-full flex flex-col items-center justify-center">
+          <img class="mb-2 w-14 h-14 border border-black rounded-full" src="../../../../../assets/img/user.png" alt="user photo">
+          <div>
+            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+          </div>
+        </div>
+        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          Nome: <span class="text-gray-900 dark:text-white">{{ usuario.name }}</span>
+        </p>
+        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          E-mail: <span class="text-gray-900 dark:text-white">{{ usuario.email }}</span>
+        </p>
+        <div class="flex items-center">
+          <label for="notifications-toggle" class="inline-flex relative items-center cursor-pointer">
+            <input 
+              type="checkbox" 
+              id="notifications-toggle" 
+              class="sr-only peer"
+              [(ngModel)]="usuario.notification" 
+              (change)="onNotificationToggle()" />
+            <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Notificações</span>
+          </label>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="flex justify-center items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+        <button (click)="close()" data-modal-hide="userModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

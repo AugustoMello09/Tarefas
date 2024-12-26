@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { CalendarioComponent } from '../../components/calendario/calendario.component';
+import { PerfilComponent } from '../../components/perfil/perfil.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -34,6 +36,14 @@ export class SidenavComponent implements OnInit {
 
   public inicio(): void {
     this.router.navigate(['']);
+  }
+
+  public calendar(): void {
+    this.dialog.open(CalendarioComponent);
+  }
+
+  public perfil(): void {
+    this.dialog.open(PerfilComponent);
   }
 
 }

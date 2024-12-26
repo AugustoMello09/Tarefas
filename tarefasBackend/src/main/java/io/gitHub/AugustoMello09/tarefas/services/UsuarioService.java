@@ -60,7 +60,7 @@ public class UsuarioService {
 	public UsuarioDTO activateNotification(UUID id) {
 		Usuario entity = repository.findById(id)
 				.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
-		entity.setNotification(true);
+		entity.setNotification(!entity.getNotification());
 		repository.save(entity);
 		return new UsuarioDTO(entity);
 	}
