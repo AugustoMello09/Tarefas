@@ -55,6 +55,9 @@ public class Usuario implements Serializable, UserDetails {
 	
 	private Boolean notification;
 	
+	@Column(columnDefinition = "TEXT", name = "IMG_URL")
+	private String imgUrl;
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "tb_usuario_cargo", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "cargo_id"))
 	private Set<Cargo> cargos = new HashSet<>();
@@ -62,13 +65,14 @@ public class Usuario implements Serializable, UserDetails {
 	@OneToMany(mappedBy = "usuario")
 	private List<Tarefa> tarefas = new ArrayList<>();
 
-	public Usuario(UUID id, String name, String email, String password, Boolean notification) {
+	public Usuario(UUID id, String name, String email, String password, Boolean notification, String imgUrl) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.notification = notification;
+		this.imgUrl = imgUrl;
 	}
 
 	@Override

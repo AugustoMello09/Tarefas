@@ -3,4 +3,5 @@ export interface Usuario {
   email: string;
   name: string;
   notification: boolean;
+  imgUrl: string;
 }

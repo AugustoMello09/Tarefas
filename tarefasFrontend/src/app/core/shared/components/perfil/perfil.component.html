@@ -16,12 +16,44 @@
       </div>
       <!-- Modal body -->
       <div class="p-6 space-y-6">
-        <div class="w-full flex flex-col items-center justify-center">
-          <img class="mb-2 w-14 h-14 border border-black rounded-full" src="../../../../../assets/img/user.png" alt="user photo">
+      
+      <form #f="ngForm">  
+        
+        <div class="w-full flex flex-col items-center justify-center">         
+
+          <img *ngIf="usuario.imgUrl; else defaultImg" 
+          class="mb-2 w-28 h-28 border border-black rounded-full" 
+          [src]="'data:image/jpeg;base64,' + usuario.imgUrl"
+          alt="Imagem do usuario" />
+     
+          <ng-template #defaultImg>
+            <div>
+              <img class="mb-2 w-28 h-28 border border-black rounded-full" src="../../../../../assets/img/user.png" alt="user photo">
+            </div>
+          </ng-template>
+
           <div>
-            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+            <input 
+              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
+              id="file_input" 
+              type="file" 
+              (change)="onFileChange($event)"
+            >
           </div>
+          
+          <button 
+          (click)="foto()" 
+          type="button" 
+          [disabled]="!imagem" 
+          class="text-white disabled:bg-gray-400 my-2 bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+          Editar foto
+          </button>
+        
         </div>
+      
+      </form> 
+
         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
           Nome: <span class="text-gray-900 dark:text-white">{{ usuario.name }}</span>
         </p>
@@ -43,7 +75,7 @@
       </div>
       <!-- Modal footer -->
       <div class="flex justify-center items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-        <button (click)="close()" data-modal-hide="userModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Fechar</button>
+        <button (click)="close()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Fechar</button>
       </div>
     </div>
   </div>

@@ -28,4 +28,12 @@ export class UsuarioService {
     const url = `${this.baseUrl}/v1/usuarios/ativarNotificacao/${id}`;
     return this.http.patch<Usuario>(url, {});
   }
+
+  public uploadImage(usuarioId: number, image: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('imagem', image);
+    return this.http.patch(`${this.baseUrl}/v1/usuarios/${usuarioId}/img`, formData, {
+      responseType: 'text'
+    });
+  }
 }

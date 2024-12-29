@@ -12,7 +12,24 @@
   </button>
   
   <hr class="my-3 h-px w-full border-black dark:border-white">
+
+  <div class="flex items-center justify-center flex-col">
+
+    <img *ngIf="usuario.imgUrl; else defaultImg" 
+          class="mb-2 w-10 h-10 border border-black rounded-full" 
+          [src]="'data:image/jpeg;base64,' + usuario.imgUrl"
+          alt="Imagem do usuario" />
+     
+          <ng-template #defaultImg>
+            <div>
+              <img class="mb-2 w-10 h-10 border border-black rounded-full" src="../../../../../assets/img/user.png" alt="user photo">
+            </div>
+          </ng-template>
+    
+      <p> {{ usuario.email }}</p>
   
+  </div>
+
   <div class="pt-4 flex flex-col h-4/5">
    <ul class="space-y-2 font-medium">
       <li>
@@ -51,7 +68,7 @@
           <span class="flex-1 ms-3 whitespace-nowrap">Tarefas do mês</span>
         </button>
     </li>
-    <li class="hidden [@media(max-height:750px)]:inline">
+    <li class="hidden [@media(max-height:880px)]:inline">
       <button (click)="calendar()" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="date_range" class="text-blue-700 hover:text-gray-700"></mat-icon>
         <span class="ms-3">Calendário</span>
@@ -70,7 +87,7 @@
        </button>
      </li>
    </ul>
-   <div class="[@media(max-height:750px)]:hidden">
+   <div class="[@media(max-height:880px)]:hidden">
      <mat-calendar></mat-calendar>
    </div>
  </div>

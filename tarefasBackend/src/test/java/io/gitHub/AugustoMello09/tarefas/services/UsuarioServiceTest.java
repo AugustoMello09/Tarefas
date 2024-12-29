@@ -55,6 +55,9 @@ public class UsuarioServiceTest {
 	@Mock
 	private CargoRepository cargoRepository;
 	
+	@Mock
+	private ImgService imgService;
+	
 	private UsuarioProvider usuarioProvider;
 	private UsuarioDTOProvider usuarioDTOProvider;
 	private UsuarioDTOInsertProvider usuarioDTOInsertProvider;
@@ -65,7 +68,7 @@ public class UsuarioServiceTest {
 		usuarioProvider = new UsuarioProvider(passwordEncoder);
 		usuarioDTOProvider = new UsuarioDTOProvider();
 		usuarioDTOInsertProvider = new UsuarioDTOInsertProvider();
-		service = new UsuarioService(repository, cargoRepository, passwordEncoder);
+		service = new UsuarioService(repository, cargoRepository, passwordEncoder, imgService);
 	}
 	
 	@DisplayName("Deve retornar um Usuario com sucesso.")
@@ -108,7 +111,7 @@ public class UsuarioServiceTest {
 	public void shouldReturnDataIntegratyViolationExceptionWhenEmailExist() {
 		UsuarioDTO usuarioDTOExpected = usuarioDTOProvider.criar();
 	    UUID differentUserId = UUID.fromString("248cf4fc-b379-4e25-8bf4-f73feb06befa"); 
-	    Usuario usuarioEntity = new Usuario(differentUserId, "Carlos", "meuEmail@gmail.com", "123", false);
+	    Usuario usuarioEntity = new Usuario(differentUserId, "Carlos", "meuEmail@gmail.com", "123", false, null);
 
 	    when(repository.findByEmail(usuarioDTOExpected.getEmail()))
 	      .thenReturn(Optional.of(usuarioEntity));

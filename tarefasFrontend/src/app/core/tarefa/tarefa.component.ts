@@ -20,7 +20,8 @@ export class TarefaComponent implements OnInit {
       id: '',
       email: '',
       name: '',
-      notification: false || true
+      notification: false || true,
+      imgUrl: ''
   }
 
   constructor(private auth : AuthService, private dialog: MatDialog, private usuarioService : UsuarioService) { }

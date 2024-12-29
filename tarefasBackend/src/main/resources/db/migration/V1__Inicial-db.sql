@@ -9,3 +9,4 @@ alter table tb_usuario_cargo add constraint FKfoxfmrp32u59p9yvguydp9ybj foreign 
 alter table tb_usuario_cargo add constraint FKdaew2172j172duhsiyma5rfq5 foreign key (usuario_id) references tb_usuario (id);
 ALTER TABLE tb_usuario ADD COLUMN notification BOOLEAN;
 ALTER TABLE tb_tarefa ADD COLUMN favorite BOOLEAN;
+ALTER TABLE tb_usuario ADD COLUMN img_url TEXT;

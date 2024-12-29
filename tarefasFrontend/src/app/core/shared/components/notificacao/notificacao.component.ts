@@ -18,7 +18,8 @@ export class NotificacaoComponent implements OnInit {
     id: '',
     email: '',
     name: '',
-    notification: false || true
+    notification: false || true,
+    imgUrl: ''
   }
 
   constructor(private service: UsuarioService,

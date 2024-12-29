@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { Usuario } from '../../model/usuario.model';
 import { UsuarioService } from 'src/app/core/service/usuario.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-perfil',
@@ -18,8 +19,11 @@ export class PerfilComponent implements OnInit {
     id: '',
     name: '',
     email: '',
-    notification: false || true
+    notification: false || true,
+    imgUrl: ''
   }
+
+  public imagem?: File;
 
     constructor(public dialogRef: MatDialogRef<PerfilComponent>,
       private spinner: NgxSpinnerService,
@@ -74,4 +78,49 @@ export class PerfilComponent implements OnInit {
     });
   }
 
+  public foto(): void {
+    this.spinner.show();
+  
+    this.service.uploadImage(this.usuario.id, this.imagem!).subscribe({
+      next: () => {
+        this.findById();
+        this.spinner.hide();
+        this.messageImg('Imagem enviada com sucesso!');
+      },
+      error: (err: HttpErrorResponse) => {
+        this.addMessageErrorFile(err);
+        this.spinner.hide();
+      }
+    });
+  }
+
+  public onFileChange(event: any): void {
+    if (event.target.files.length > 0) {
+      this.imagem = event.target.files[0];
+    }
+  }
+
+
+  public addMessageErrorFile(err: HttpErrorResponse) {
+    if (err.status === 400 && err.error) {
+      this.messageImg("Formato não suportado, Somente imagens PNG e JPG são permitidas.");
+    } 
+  }
+
+  public messageImg(msg: string) {
+    this.snack
+      .open(`${msg}`, '', {
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        duration: 8000
+    })
+  }
+
 }
+
+
+
+
+
+  
+

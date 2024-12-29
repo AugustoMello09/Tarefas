@@ -30,6 +30,8 @@ public class UsuarioDTO implements Serializable {
 	
 	private Boolean notification;
 	
+	private String imgUrl;
+	
 	public UsuarioDTO(Usuario entity) {
 		id = entity.getId();
 		name = entity.getName();
@@ -39,6 +41,7 @@ public class UsuarioDTO implements Serializable {
 		entity.getTarefas().stream()
 		.forEach(tar -> this.tarefas.add(new TarefaDTO(tar)));
 		notification = entity.getNotification();
+		imgUrl = entity.getImgUrl();
 	}
 
 }

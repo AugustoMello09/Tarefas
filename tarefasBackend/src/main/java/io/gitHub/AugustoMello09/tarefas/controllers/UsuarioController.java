@@ -1,5 +1,6 @@
 package io.gitHub.AugustoMello09.tarefas.controllers;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.UUID;
 
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.gitHub.AugustoMello09.tarefas.domain.dtos.UsuarioDTO;
@@ -49,5 +52,11 @@ public class UsuarioController {
 	public ResponseEntity<UsuarioDTO> activateNotification(@PathVariable UUID id) {
 		var response  = service.activateNotification(id);
 		return ResponseEntity.ok().body(response);
+	}
+	
+	@PatchMapping(value = "/{usuarioId}/img")
+	public ResponseEntity<Void> uploadfile(@PathVariable UUID usuarioId, @RequestParam("imagem") MultipartFile imagem) throws IOException {
+		service.uploadfile(usuarioId, imagem);
+		return ResponseEntity.ok().build();
 	}
 }

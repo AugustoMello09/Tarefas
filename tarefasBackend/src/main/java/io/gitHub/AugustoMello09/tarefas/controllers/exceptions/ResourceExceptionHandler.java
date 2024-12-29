@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import io.gitHub.AugustoMello09.tarefas.services.exceptions.AuthorizationException;
 import io.gitHub.AugustoMello09.tarefas.services.exceptions.DataIntegratyViolationException;
+import io.gitHub.AugustoMello09.tarefas.services.exceptions.FileException;
 import io.gitHub.AugustoMello09.tarefas.services.exceptions.ObjectNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -34,6 +35,12 @@ public class ResourceExceptionHandler {
 		StandardError err = new StandardError(LocalDateTime.now(), HttpStatus.FORBIDDEN.value(), e.getMessage(),
 				request.getRequestURI());
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(err);
+	}
+	
+	@ExceptionHandler(FileException.class)
+	public ResponseEntity<StandardError> file(FileException e, HttpServletRequest request) {
+		StandardError err = new StandardError(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(), e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
 
 }
