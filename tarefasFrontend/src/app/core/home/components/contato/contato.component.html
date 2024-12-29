@@ -23,12 +23,22 @@
           
           <div>
             <label for="email" class="text-base font-medium text-white">Seu email:</label>
-            <input type="text" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Seu email" name="email" maxlength="65" required  [(ngModel)]="emailModel.email" required appEmailValidator/>
-            <div *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
+            <input 
+              type="text" 
+              id="email" 
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+              placeholder="Seu email" 
+              name="email" 
+              maxlength="65" 
+              required  
+              [(ngModel)]="emailModel.email"
+              appEmail />
+            <div class="flex flex-col items-center" *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
               <span class="text-red-600 font-font-secundaria font-bold text-sm" *ngIf="f.controls['email']?.errors?.['required']">O campo Email deve ser preenchido.</span>
               <span class="text-red-600 font-font-secundaria font-bold text-sm" *ngIf="f.controls['email']?.errors?.['invalidEmail']">O campo Email deve ser um endereço de email válido.</span>
             </div>
           </div>
+          
           
           <div class="py-3">
             
@@ -43,7 +53,7 @@
           </div>
 
           <div class="text-center py-3">
-             <button  [disabled]="f.invalid" class="text-white disabled:bg-gray-400 disabled:cursor-not-allowed bg-blue-950 hover:bg-green-400   focus:ring-4 focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Enviar mensagem</button>
+             <button (click)="enviarEmail()" [disabled]="f.invalid" class="text-white disabled:bg-gray-400 disabled:cursor-not-allowed bg-blue-950 hover:bg-green-400   focus:ring-4 focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Enviar mensagem</button>
            </div>
 
         </div>  

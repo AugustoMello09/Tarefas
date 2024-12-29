@@ -14,7 +14,6 @@ import { AuthService } from './core/service/auth.service';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { RefreshTokenInterceptor } from './core/interceptors/refresh-token.interceptor';
 
-
 @NgModule({
   declarations: [
     AppComponent,

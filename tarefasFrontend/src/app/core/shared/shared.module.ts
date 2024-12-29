@@ -12,8 +12,7 @@ import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { NotificacaoComponent } from './components/notificacao/notificacao.component';
-
-
+import { EmailValidatorDirective } from './directives/email-validator.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,8 @@ import { NotificacaoComponent } from './components/notificacao/notificacao.compo
     SidenavComponent,
     CalendarioComponent,
     PerfilComponent,
-    NotificacaoComponent
+    NotificacaoComponent,
+    EmailValidatorDirective,
   ],
   imports: [
     CommonModule,
@@ -40,7 +40,8 @@ import { NotificacaoComponent } from './components/notificacao/notificacao.compo
     SidenavComponent,
     CalendarioComponent,
     PerfilComponent,
-    NotificacaoComponent
+    NotificacaoComponent,
+    EmailValidatorDirective
   ]
 })
 export class SharedModule { }

@@ -13,9 +13,10 @@
   
   <div class="mb-4">
     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-    <input type="text" id="email" name="email" required [(ngModel)]="usuario.email" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
-    <div *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
+    <input type="text" id="email" appEmail name="email" required [(ngModel)]="usuario.email" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
+    <div class="flex flex-col items-center" *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
       <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['email']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
+      <span class="text-red-600 font-font-secundaria font-bold text-sm" *ngIf="f.controls['email']?.errors?.['invalidEmail']">O campo Email deve ser um endereço de email válido.</span>
     </div>
   </div>
   

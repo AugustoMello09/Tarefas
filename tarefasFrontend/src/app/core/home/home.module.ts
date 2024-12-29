@@ -11,7 +11,6 @@ import { ContatoComponent } from './components/contato/contato.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     HomeComponent,
@@ -19,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     FuncionalidadesComponent,
     VenhaComponent,
     SabemosComponent,
-    ContatoComponent
+    ContatoComponent,
   ],
   imports: [
     CommonModule,

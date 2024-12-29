@@ -4,10 +4,10 @@
 
     <div class="mb-4">
       <label for="username" class="block text-gray-600">Email</label>
-      <input type="text" id="username" name="username" required [(ngModel)]="usuario.email" maxlength="150" class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off">
-      <div *ngIf="(f.controls['username']?.invalid && f.controls['username']?.touched) || f.controls['username']?.dirty">
+      <input type="text" id="username" name="username" required [(ngModel)]="usuario.email" appEmail maxlength="150" class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off">
+      <div class="flex flex-col items-center" *ngIf="(f.controls['username']?.invalid && f.controls['username']?.touched) || f.controls['username']?.dirty">
         <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['username']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
-        <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['username']?.errors?.['maxlength']">O campo username deve ter no máximo 150 caracteres.</span>
+        <span class="text-red-600 font-font-secundaria font-bold text-sm" *ngIf="f.controls['username']?.errors?.['invalidEmail']">O campo Email deve ser um endereço de email válido.</span>
       </div>
     </div>
 
