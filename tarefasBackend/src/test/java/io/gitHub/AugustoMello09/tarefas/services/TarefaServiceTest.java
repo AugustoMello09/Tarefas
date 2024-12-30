@@ -116,6 +116,7 @@ public class TarefaServiceTest {
 		tarefa.setCost(tarefaRecord.cost());
 		tarefa.setDueDate(LocalDate.parse(tarefaRecord.dueDate()));
 		tarefa.setPosition(1);
+		
 
 		when(usuarioRepository.findById(IDUSUARIO)).thenReturn(Optional.of(usuario));
 		when(repository.save(any(Tarefa.class))).thenReturn(tarefa);

@@ -18,9 +18,12 @@ import io.gitHub.AugustoMello09.tarefas.domain.dtos.RefreshTokenDTO;
 import io.gitHub.AugustoMello09.tarefas.domain.dtos.TokenResponseDTO;
 import io.gitHub.AugustoMello09.tarefas.domain.entities.Usuario;
 import io.gitHub.AugustoMello09.tarefas.services.TokenService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+@Tag(name = "Auth")
 @RestController
 @RequestMapping(value = "/v1/auth")
 @RequiredArgsConstructor
@@ -31,6 +34,7 @@ public class AuthController {
 	
 	private final TokenService tokenService;
 	
+	@Operation(summary = "Login da aplicação. ")
 	@PostMapping(value = "/login")
 	public ResponseEntity<?> login(@Valid @RequestBody AuthenticationDTO data) {
 		try {
@@ -45,6 +49,7 @@ public class AuthController {
 	    }
 	}
 	
+	@Operation(summary = "Refresh token da aplicação. ")
 	@PostMapping(value = "/refresh-token")
 	public ResponseEntity<TokenResponseDTO> refreshToken(@RequestBody RefreshTokenDTO refreshTokenDto) {
 		TokenResponseDTO tokens = tokenService.refreshAccessToken(refreshTokenDto.token());

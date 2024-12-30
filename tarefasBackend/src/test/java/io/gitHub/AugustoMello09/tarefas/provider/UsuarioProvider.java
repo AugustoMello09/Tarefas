@@ -28,7 +28,8 @@ public class UsuarioProvider {
 		usuario.setId(ID);
 		usuario.setName(NOME);
 		usuario.setEmail(EMAIL);
-		usuario.setPassword(passwordEncoder.encode(SENHA));	
+		usuario.setPassword(passwordEncoder.encode(SENHA));
+		usuario.setNotification(true);
 		Cargo cargo = new Cargo();
 		cargo.setId(1L);
 		usuario.getCargos().add(cargo);

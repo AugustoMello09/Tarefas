@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.UUID;
 
 import io.gitHub.AugustoMello09.tarefas.domain.entities.Usuario;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +22,13 @@ public class UsuarioDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private UUID id;
-
+	
+	@Size(max = 124, message = "máximo de caracteres 124")
+	@NotBlank(message = "campo obrigatório ")
 	private String name;
-
+	
+	@Email(message = "Entre com um Email válido.", regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$")
+	@NotBlank(message = "campo obrigatório ")
 	private String email;
 	
 	private List<CargoDTO> cargos = new ArrayList<>();
