@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UsuarioRegistro } from '../shared/model/usuarioRegistro.model';
 import { Usuario } from '../shared/model/usuario.model';
@@ -12,7 +12,17 @@ export class UsuarioService {
 
   baseUrl: string = environment.baseUrl;
 
+  private usuarioSubject = new BehaviorSubject<Usuario | null>(null);
+
   constructor(private http: HttpClient) { }
+
+  get usuario$(): Observable<Usuario | null> {
+    return this.usuarioSubject.asObservable();
+  }
+  
+  emitUsuarioUpdate(usuario: Usuario): void {
+    this.usuarioSubject.next(usuario);
+  }
 
   public create(usuario: UsuarioRegistro): Observable<UsuarioRegistro> {
     const url = `${this.baseUrl}/v1/usuarios`;

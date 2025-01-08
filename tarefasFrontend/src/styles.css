@@ -49,3 +49,8 @@ overflow: hidden !important;
   .mat-dialog-container {
     padding: 0 !important;
   }
+
+  p {
+    word-break: break-all !important;
+  }
+

@@ -4,16 +4,16 @@
 
   <div class="mb-4">
     <label for="username" class="block text-sm font-medium text-gray-700">Nome</label>
-    <input type="text" id="username" name="username" required [(ngModel)]="usuario.name" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
+    <input type="text" id="username" name="username" required maxlength="30" [(ngModel)]="usuario.name" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
     <div *ngIf="(f.controls['username']?.invalid && f.controls['username']?.touched) || f.controls['username']?.dirty">
       <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['username']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
-      <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['username']?.errors?.['maxlength']">O campo username deve ter no máximo 150 caracteres.</span>
+      <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['username']?.errors?.['maxlength']">O campo username deve ter no máximo 30 caracteres.</span>
     </div>
   </div>
   
   <div class="mb-4">
     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-    <input type="text" id="email" appEmail name="email" required [(ngModel)]="usuario.email" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
+    <input type="text" id="email" appEmail name="email" required maxlength="60" [(ngModel)]="usuario.email" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
     <div class="flex flex-col items-center" *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
       <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['email']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
       <span class="text-red-600 font-font-secundaria font-bold text-sm" *ngIf="f.controls['email']?.errors?.['invalidEmail']">O campo Email deve ser um endereço de email válido.</span>
@@ -22,7 +22,7 @@
   
   <div class="mb-4">
     <label for="senha" class="block text-sm font-medium text-gray-700">Senha</label>
-    <input type="senha" id="senha" name="senha" required [(ngModel)]="usuario.senha" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
+    <input type="senha" id="senha" name="senha" required axlength="35" [(ngModel)]="usuario.senha" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
     <div *ngIf="(f.controls['senha']?.invalid && f.controls['senha']?.touched) || f.controls['senha']?.dirty">
       <span class="text-red-600 font-font-secundaria font-bold text-xs" *ngIf="f.controls['senha']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
     </div>

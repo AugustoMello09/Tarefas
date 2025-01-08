@@ -51,6 +51,7 @@ export class PerfilComponent implements OnInit {
       const id = decodedToken.id;
       this.service.findById(id).subscribe(result => {
         this.usuario = result;
+        this.service.emitUsuarioUpdate(result);
       })
     }
   }

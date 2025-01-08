@@ -30,6 +30,11 @@ export class SidenavComponent implements OnInit {
     private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
+    this.usuarioService.usuario$.subscribe(updatedUsuario => {
+      if (updatedUsuario) {
+        this.usuario = updatedUsuario;
+      }
+    });
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         setTimeout(() => {  initFlowbite();})
@@ -66,6 +71,7 @@ export class SidenavComponent implements OnInit {
       const id = decodedToken.id;
       this.usuarioService.findById(id).subscribe(result => {
         this.usuario = result;
+        this.usuarioService.emitUsuarioUpdate(result);
       })
     }
   }  
