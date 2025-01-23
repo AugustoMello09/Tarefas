@@ -1,67 +1,64 @@
-<section class="w-full bg-blue-900 rounded-t-3xl overflow-x-hidden">
+<section class="bg-blue-900 rounded-t-3xl">
   
-
-  <div class="flex flex-col justify-center items-center h-5/6">
-
-    <div class="text-center">
-      <p class="text-white text-3xl font-dm font-bold py-4 xd:text-2xl">Entre em contado</p>
-    </div>
-
-    <div class="max-w-6xl">
+  <p class="text-white text-3xl font-dm font-bold py-4 xd:text-2xl text-center">Entre em contato</p>
+  
+  <div class="flex items-center justify-center">
+   
+    <form #f="ngForm" class="mx-5 w-full md:w-1/2">
       
-      <form #f="ngForm" class="mx-5">
-           
-        <div class="flex flex-col">
+      <div class="py-3">
+        <label for="name" class="text-lg font-medium text-white">Seu nome:</label>
+        <input 
+          type="text" 
+          id="name" 
+          class="bg-gray-50 border w-full border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-4" 
+          placeholder="Seu nome" 
+          name="name" 
+          maxlength="35" 
+          required 
+          [(ngModel)]="emailModel.name"/>
+        <div *ngIf="(f.controls['name']?.invalid && f.controls['name']?.touched) || f.controls['name']?.dirty">
+          <span class="text-red-600 font-font-secundaria font-bold text-sm text-left w-full" *ngIf="f.controls['name']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
+        </div>
+      </div>
+      
+      <div class="py-3">
+        <label for="email" class="text-lg font-medium text-white">Seu email:</label>
+        <input 
+          type="text" 
+          id="email" 
+          class="bg-gray-50 border w-full border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-4" 
+          placeholder="Seu email" 
+          name="email" 
+          maxlength="65" 
+          required  
+          [(ngModel)]="emailModel.email"
+          appEmail />
+        <div class="flex flex-col items-center" *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
+          <span class="text-red-600 font-font-secundaria font-bold text-sm text-left w-full" *ngIf="f.controls['email']?.errors?.['required']">O campo Email deve ser preenchido.</span>
+          <span class="text-red-600 font-font-secundaria font-bold text-sm text-left w-full" *ngIf="f.controls['email']?.errors?.['invalidEmail']">O campo Email deve ser um endereço de email válido.</span>
+        </div>
+      </div>
+      
+      <div class="py-3">
+        <label for="large-input" class="text-lg font-medium text-white">Sua mensagem:</label>
+        <input
+          class="bg-gray-50 border w-full border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-4" 
+          type="text" 
+          id="large-input" 
+          placeholder="Sua mensagem" 
+          name="message"  
+          maxlength="150" 
+          required 
+          [(ngModel)]="emailModel.message">
+        <div *ngIf="(f.controls['message']?.invalid && f.controls['message']?.touched) || f.controls['message']?.dirty">
+          <span class="text-red-600 font-font-secundaria font-bold text-sm text-left w-full" *ngIf="f.controls['message']?.errors?.['required']">O campo Mensagem deve ser preenchido.</span>
+        </div>
+      </div>
 
-          <div class="py-3">
-            <label for="name" class="text-base font-medium text-white">Seu nome:</label>
-            <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Seu nome" name="name" maxlength="35" required [(ngModel)]="emailModel.name"/>
-            <div *ngIf="(f.controls['name']?.invalid && f.controls['name']?.touched) || f.controls['name']?.dirty">
-              <span class="text-red-600 font-font-secundaria font-bold text-sm" *ngIf="f.controls['name']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
-            </div>
-          </div>
-          
-          <div>
-            <label for="email" class="text-base font-medium text-white">Seu email:</label>
-            <input 
-              type="text" 
-              id="email" 
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
-              placeholder="Seu email" 
-              name="email" 
-              maxlength="65" 
-              required  
-              [(ngModel)]="emailModel.email"
-              appEmail />
-            <div class="flex flex-col items-center" *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
-              <span class="text-red-600 font-font-secundaria font-bold text-sm" *ngIf="f.controls['email']?.errors?.['required']">O campo Email deve ser preenchido.</span>
-              <span class="text-red-600 font-font-secundaria font-bold text-sm" *ngIf="f.controls['email']?.errors?.['invalidEmail']">O campo Email deve ser um endereço de email válido.</span>
-            </div>
-          </div>
-          
-          
-          <div class="py-3">
-            
-            <div>
-              <label for="large-input" class="text-base font-medium text-white">Sua mensagem:</label>
-              <input type="text" id="large-input" class="w-full p-6 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500" placeholder="Sua mensagem" name="message"  maxlength="150" required [(ngModel)]="emailModel.message">
-              <div *ngIf="(f.controls['message']?.invalid && f.controls['message']?.touched) || f.controls['message']?.dirty">
-                <span class="text-red-600 font-font-secundaria font-bold text-sm" *ngIf="f.controls['message']?.errors?.['required']">O campo Mensagem deve ser preenchido.</span>
-              </div>
-            </div>
-          
-          </div>
-
-          <div class="text-center py-3">
-             <button (click)="enviarEmail()" [disabled]="f.invalid" class="text-white disabled:bg-gray-400 disabled:cursor-not-allowed bg-blue-950 hover:bg-green-400   focus:ring-4 focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Enviar mensagem</button>
-           </div>
-
-        </div>  
-
-      </form>
-    
-    </div>
-
+      <div class="text-center py-3">
+        <button (click)="enviarEmail()" [disabled]="f.invalid" class="text-white disabled:bg-gray-400 disabled:cursor-not-allowed bg-blue-950 hover:bg-green-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Enviar mensagem</button>
+      </div>
+    </form>
   </div>
-
 </section>

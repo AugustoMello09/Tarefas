@@ -5,3 +5,7 @@
 .stroke-black {
   stroke: black;
 }
+
+p {
+  word-break: break-word !important;
+}

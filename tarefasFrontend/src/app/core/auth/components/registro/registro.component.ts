@@ -48,16 +48,10 @@ export class RegistroComponent implements OnInit {
         this.router.navigate(['/tarefas']);
       })
     }, (err: HttpErrorResponse) => {
-      if (err.status === 400) {
-        if (err.error && err.error.error && err.error.error.includes('email')) {
-          this.message('Entre com um email válido.');
-        } else {
-          for (const error of err.error.errors) {
-            this.addMessageError(error.fieldName, error.message);
-          }
-        }
-      }
       this.spinner.hide();
+      if (err.status === 400) {
+          this.message('Este email já está em uso. Escolha outro.');
+        } 
     });
   }
 

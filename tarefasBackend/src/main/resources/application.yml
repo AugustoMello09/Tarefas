@@ -10,7 +10,7 @@ spring:
     name: listaTarefaApplication
   profiles:
     active:
-    - dev
+    - test
   mail: 
     host: smtp.gmail.com
     port: 587
